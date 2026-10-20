@@ -193,5 +193,32 @@
   function closeModal(){document.getElementById('infoModal').classList.remove('open');}
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
+  
+<script>
+  const API_URL = "https://nexus-virtual-backend.onrender.com";
+
+  async function verificarBackend() {
+    try {
+      const resposta = await fetch(`${API_URL}/health`);
+
+      if (!resposta.ok) {
+        throw new Error("Erro HTTP: " + resposta.status);
+      }
+
+      const dados = await resposta.json();
+
+      if (dados.ok === true) {
+        console.log("NEXUS VIRTUAL: API conectada", dados);
+      } else {
+        console.warn("API respondeu sem confirmar saúde", dados);
+      }
+    } catch (erro) {
+      console.error("NEXUS VIRTUAL: falha na conexão", erro);
+    }
+  }
+
+  verificarBackend();
+</script>
+
 </body>
 </html>
