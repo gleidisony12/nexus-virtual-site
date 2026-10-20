@@ -1,197 +1,683 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#070b14">
-  <meta name="description" content="NEXUS VIRTUAL — projeto de tecnologia em estruturação. Informações transparentes sobre serviços digitais e infraestrutura virtual.">
-  <title>NEXUS VIRTUAL | Tecnologia em estruturação</title>
+
+  <title>NEXUS VIRTUAL | Tecnologia Digital</title>
+
   <style>
-    :root{
-      --bg:#070b14;--panel:#0d1525;--panel2:#101c30;--line:#203653;
-      --blue:#38bdf8;--blue2:#2563eb;--text:#eef6ff;--muted:#9db0c9;
-      --green:#6ee7b7;--radius:20px
+    :root {
+      --bg: #070b14;
+      --panel: #101c30;
+      --blue: #38bdf8;
+      --text: #eef6ff;
+      --muted: #9db0c9;
+      --line: #203653;
+      --green: #6ee7b7;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 75% 0%,#10274a 0%,transparent 36%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1120px,calc(100% - 36px));margin:auto}
-    header{position:sticky;top:0;z-index:5;background:rgba(7,11,20,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(56,189,248,.16)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.08em}
-    .logo{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#06101e;font-weight:1000;box-shadow:0 0 28px #2563eb55}
-    .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.22em;font-weight:700}
-    nav{display:flex;gap:24px;color:var(--muted);font-size:14px}
-    nav a:hover{color:var(--blue)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:12px;font-weight:800;border:1px solid var(--line);transition:.2s;cursor:pointer;font:inherit}
-    .btn-primary{background:linear-gradient(135deg,var(--blue),#4f7cff);color:#05101f;border:0;box-shadow:0 8px 28px #2563eb35}
-    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
-    .btn-ghost{background:#0c1423;color:var(--text)}
-    .hero{padding:88px 0 62px;display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
-    .eyebrow{display:inline-flex;gap:9px;align-items:center;padding:7px 12px;border:1px solid #244769;border-radius:99px;background:#0c1a2c;color:#a9e6ff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    .dot{width:7px;height:7px;border-radius:50%;background:#fbbf24;box-shadow:0 0 12px #fbbf24}
-    h1{font-size:clamp(40px,6vw,68px);line-height:1.03;letter-spacing:-.045em;margin:22px 0}
-    h1 span{background:linear-gradient(90deg,#eafaff,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{font-size:18px;color:var(--muted);max-width:620px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .fine{font-size:12px;color:#8297b2;margin-top:16px}
-    .visual{min-height:370px;border:1px solid #1f4267;border-radius:28px;background:linear-gradient(145deg,#101f35,#09111f 70%);padding:24px;position:relative;overflow:hidden;box-shadow:0 24px 90px #0007}
-    .visual:before,.visual:after{content:"";position:absolute;border:1px solid #38bdf822;border-radius:50%;width:330px;height:330px;right:-90px;top:20px}
-    .visual:after{width:230px;height:230px;right:-40px;top:70px}
-    .server-stack{position:relative;z-index:1;display:grid;gap:13px;margin-top:18px}
-    .server{display:flex;align-items:center;gap:14px;padding:17px;border:1px solid #294b70;border-radius:15px;background:rgba(7,15,29,.85)}
-    .server-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#102f50;color:var(--blue);font-size:22px}
-    .server b{display:block;font-size:14px}.server small{color:var(--muted)}
-    .status{margin-left:auto;color:#fbbf24;font-size:11px;font-weight:800;white-space:nowrap}
-    section{padding:54px 0}
-    .section-head{text-align:center;max-width:720px;margin:0 auto 30px}
-    .section-head h2{font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.03em;margin:0 0 12px}
-    .section-head p{color:var(--muted);margin:0}
-    .notice{display:flex;gap:14px;align-items:flex-start;padding:18px;border:1px solid #775c26;background:#211a0b;border-radius:16px;color:#f7e6bc;margin:0 auto 28px;max-width:900px}
-    .notice strong{display:block;color:#fff0c6;margin-bottom:3px}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .plan{background:linear-gradient(160deg,#101c30,#0a111f);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;display:flex;flex-direction:column;min-height:270px}
-    .plan.featured{border-color:#2788c9;box-shadow:0 0 36px #1688d022}
-    .plan .label{color:var(--blue);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
-    .plan h3{font-size:22px;margin:9px 0 3px}
-    .price{font-size:30px;font-weight:900;letter-spacing:-.04em}
-    .price small{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
-    .plan p{color:var(--muted);font-size:14px;flex:1}
-    .plan .btn{width:100%;margin-top:16px;font-size:13px}
-    .plan .btn:disabled{opacity:.6;cursor:not-allowed}
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .feature{padding:22px;border:1px solid var(--line);background:#0b1321;border-radius:17px}
-    .feature .ico{font-size:24px;color:var(--blue)}
-    .feature h3{margin:12px 0 6px;font-size:17px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step}
-    .step{border-left:2px solid #2388c9;padding:4px 18px 12px}
-    .step b{color:var(--blue);font-size:12px;letter-spacing:.1em}
-    .step h3{margin:8px 0}.step p{color:var(--muted);font-size:14px;margin:0}
-    .cta{padding:34px;border:1px solid #244c72;border-radius:24px;background:linear-gradient(115deg,#0e2440,#0b1424);display:flex;justify-content:space-between;align-items:center;gap:24px}
-    .cta h2{margin:0 0 8px;font-size:28px}.cta p{margin:0;color:var(--muted)}
-    footer{padding:30px 0 42px;border-top:1px solid #1a2a40;color:#8da2bd;font-size:12px;margin-top:50px}
-    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .modal{position:fixed;inset:0;z-index:10;background:#02050bdc;display:none;align-items:center;justify-content:center;padding:20px}
-    .modal.open{display:flex}
-    .dialog{max-width:500px;width:100%;padding:28px;border:1px solid #2a4e75;border-radius:22px;background:#0d1728;box-shadow:0 20px 80px #000a}
-    .dialog h2{margin:0 0 10px}.dialog p{color:var(--muted)}
-    .close{float:right;background:transparent;border:0;color:#c6d5e8;font-size:26px;cursor:pointer}
-    @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:60px}.visual{min-height:330px}.grid{grid-template-columns:repeat(2,1fr)}.features,.steps{grid-template-columns:1fr}}
-    @media(max-width:560px){nav{display:none}.nav>.btn{padding:10px 12px;font-size:12px}.hero{padding:48px 0 30px}.grid{grid-template-columns:1fr}.visual{padding:16px;min-height:310px}.cta{padding:24px;align-items:flex-start;flex-direction:column}.notice{padding:14px}}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(
+          ellipse at 75% 0%,
+          #10274a 0%,
+          transparent 40%
+        ),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #070b14ee;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 75px;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo {
+      background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #2563eb
+      );
+      color: #06101e;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-size: 23px;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .hero {
+      padding: 90px 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #10243c;
+      border: 1px solid #244769;
+      border-radius: 30px;
+      color: var(--blue);
+      padding: 7px 15px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1.1;
+      margin: 22px 0;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin: 8px 8px 8px 0;
+    }
+
+    .primary {
+      background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #4f7cff
+      );
+      color: #06101e;
+    }
+
+    .secondary {
+      background: #101c30;
+      border: 1px solid var(--line);
+      color: white;
+    }
+
+    .visual {
+      background: linear-gradient(
+        145deg,
+        #101f35,
+        #09111f
+      );
+      border: 1px solid #1f4267;
+      border-radius: 25px;
+      padding: 25px;
+    }
+
+    .server {
+      background: #091525;
+      border: 1px solid #294b70;
+      border-radius: 14px;
+      padding: 17px;
+      margin-top: 13px;
+    }
+
+    .server strong {
+      display: block;
+    }
+
+    .server small {
+      color: var(--muted);
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(
+        160deg,
+        #101c30,
+        #0a111f
+      );
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .card.featured {
+      border-color: var(--blue);
+    }
+
+    .card h3 {
+      font-size: 23px;
+    }
+
+    .price {
+      font-size: 31px;
+      font-weight: bold;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 12px;
+      background: #17263b;
+      color: #a8bad0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: not-allowed;
+    }
+
+    .notice {
+      padding: 20px;
+      background: #211a0b;
+      border: 1px solid #775c26;
+      color: #f7e6bc;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      border-left: 3px solid var(--blue);
+      padding: 15px;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .status-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fbbf24;
+    }
+
+    .status-box.online .status-dot {
+      background: var(--green);
+    }
+
+    .status-box.offline .status-dot {
+      background: #fb7185;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 35px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 600px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 50px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+    }
   </style>
 </head>
+
 <body>
+
 <header>
-  <div class="wrap nav">
-    <a class="brand" href="#inicio" aria-label="NEXUS VIRTUAL início">
-      <span class="logo">N</span><span>NEXUS VIRTUAL<small>TECNOLOGIA & INFRAESTRUTURA</small></span>
+  <div class="container navbar">
+    <a href="#inicio" class="brand">
+      <div class="logo">N</div>
+      <div>NEXUS VIRTUAL</div>
     </a>
-    <nav><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#processo">Próximos passos</a></nav>
-    <a class="btn btn-ghost" href="#planos">Ver planos</a>
+
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#planos">Planos</a>
+      <a href="#processo">Próximos passos</a>
+    </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap hero" id="inicio">
+
+  <div class="container hero" id="inicio">
+
     <div>
-      <div class="eyebrow"><span class="dot"></span> Projeto em estruturação</div>
-      <h1>Infraestrutura digital para um <span>futuro conectado.</span></h1>
-      <p class="lead">A NEXUS VIRTUAL está organizando sua oferta de soluções tecnológicas com foco em clareza, segurança e informação verificável.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#sobre">Conheça o projeto <span aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="#planos">Consultar opções</a>
+      <span class="tag">
+        PROJETO EM ESTRUTURAÇÃO
+      </span>
+
+      <h1>
+        Infraestrutura digital para um
+        <span>futuro conectado.</span>
+      </h1>
+
+      <p class="lead">
+        A NEXUS VIRTUAL está organizando
+        soluções tecnológicas com foco em
+        transparência, segurança e inovação.
+      </p>
+
+      <a href="#sobre" class="btn primary">
+        Conheça o projeto
+      </a>
+
+      <a href="#planos" class="btn secondary">
+        Consultar opções
+      </a>
+
+      <p style="color:#9db0c9;font-size:13px">
+        Os planos estão em avaliação e
+        ainda não estão disponíveis para compra.
+      </p>
+
+      <div
+        id="apiIndicator"
+        class="status-box"
+        role="status"
+        aria-live="polite"
+      >
+        <span class="status-dot"></span>
+        <span id="apiStatus">
+          Verificando conexão com o servidor...
+        </span>
       </div>
-      <p class="fine">Transparência em primeiro lugar: os planos abaixo estão em avaliação e não estão disponíveis para compra.</p>
     </div>
-    <div class="visual" aria-label="Ilustração de servidores digitais">
-      <div class="eyebrow">Nexus systems / 01</div>
-      <div class="server-stack">
-        <div class="server"><div class="server-icon">▤</div><div><b>Infraestrutura virtual</b><small>Descrição e capacidade em validação</small></div><span class="status">EM ANÁLISE</span></div>
-        <div class="server"><div class="server-icon">⌘</div><div><b>Software & serviços</b><small>Escopo comercial em definição</small></div><span class="status">EM ANÁLISE</span></div>
-        <div class="server"><div class="server-icon">◈</div><div><b>Operação responsável</b><small>Documentação financeira e jurídica</small></div><span class="status">EM ANÁLISE</span></div>
+
+    <div class="visual">
+
+      <span class="tag">
+        NEXUS SYSTEMS / 01
+      </span>
+
+      <div class="server">
+        <strong>Infraestrutura virtual</strong>
+        <small>
+          Capacidade em validação
+        </small>
       </div>
+
+      <div class="server">
+        <strong>Software e serviços</strong>
+        <small>
+          Escopo em definição
+        </small>
+      </div>
+
+      <div class="server">
+        <strong>Operação responsável</strong>
+        <small>
+          Documentação em análise
+        </small>
+      </div>
+
     </div>
   </div>
 
   <section id="sobre">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Tecnologia com informação clara.</h2>
-        <p>Estamos estruturando a descrição dos serviços, a capacidade operacional, as condições comerciais e os canais de suporte antes de disponibilizar qualquer oferta.</p>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Tecnologia com informação clara</h2>
+        <p>
+          Nossa estrutura está sendo preparada
+          para oferecer serviços digitais
+          com condições transparentes.
+        </p>
       </div>
-      <div class="features">
-        <article class="feature"><div class="ico">⌁</div><h3>Escopo verificável</h3><p>Qualquer serviço publicado deverá explicar exatamente o que o cliente recebe e quais são seus limites.</p></article>
-        <article class="feature"><div class="ico">▣</div><h3>Gestão organizada</h3><p>Registros financeiros e documentação operacional serão usados para apoiar decisões responsáveis.</p></article>
-        <article class="feature"><div class="ico">◇</div><h3>Transparência</h3><p>Não anunciamos rendimentos, prazos de retorno ou ganhos garantidos sem validação jurídica e financeira.</p></article>
+
+      <div class="steps">
+
+        <div class="card">
+          <h3>Infraestrutura</h3>
+          <p>
+            Organização de soluções
+            tecnológicas e serviços digitais.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Gestão</h3>
+          <p>
+            Planejamento operacional,
+            financeiro e administrativo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Transparência</h3>
+          <p>
+            Informações claras sobre
+            produtos e condições futuras.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
   <section id="planos">
-    <div class="wrap">
-      <div class="section-head">
+    <div class="container">
+
+      <div class="section-title">
         <h2>Planos em avaliação</h2>
-        <p>Os valores abaixo representam apenas faixas consideradas para pesquisa interna, não uma oferta comercial ativa.</p>
+        <p>
+          Valores de referência para
+          planejamento interno.
+        </p>
       </div>
-      <div class="notice"><span aria-hidden="true">⚠</span><div><strong>Compra e pagamentos temporariamente indisponíveis</strong>A NEXUS VIRTUAL não está recebendo valores por estes planos. Não há rendimento ou prazo de retorno anunciado. A disponibilização depende da definição do produto, da análise financeira e da avaliação jurídica aplicável.</div></div>
+
+      <div class="notice">
+        <strong>
+          Pagamentos temporariamente indisponíveis.
+        </strong>
+        <p>
+          Nenhum plano está disponível
+          para compra ou investimento.
+          Não há promessa de rendimentos.
+        </p>
+      </div>
+
       <div class="grid">
-        <article class="plan"><span class="label">Faixa 01</span><h3>Starter</h3><div class="price">R$ 50 <small>/ referência</small></div><p>Faixa inicial para estudo de uma futura oferta de serviço tecnológico.</p><button class="btn btn-ghost" disabled>Em avaliação</button></article>
-        <article class="plan featured"><span class="label">Faixa 02</span><h3>Pro</h3><div class="price">R$ 150 <small>/ referência</small></div><p>Escopo, capacidade e condições comerciais ainda não definidos.</p><button class="btn btn-ghost" disabled>Em avaliação</button></article>
-        <article class="plan"><span class="label">Faixa 03</span><h3>Advanced</h3><div class="price">R$ 300 <small>/ referência</small></div><p>Disponibilidade condicionada à validação do produto e dos custos.</p><button class="btn btn-ghost" disabled>Em avaliação</button></article>
-        <article class="plan"><span class="label">Faixa 04</span><h3>Elite</h3><div class="price">R$ 500 <small>/ referência</small></div><p>Nenhum benefício ou retorno financeiro está sendo prometido.</p><button class="btn btn-ghost" disabled>Em avaliação</button></article>
+
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">R$ 50</div>
+          <p>Plano inicial em estudo.</p>
+          <button disabled>Em avaliação</button>
+        </div>
+
+        <div class="card featured">
+          <h3>Pro</h3>
+          <div class="price">R$ 150</div>
+          <p>Serviços e condições em definição.</p>
+          <button disabled>Em avaliação</button>
+        </div>
+
+        <div class="card">
+          <h3>Advanced</h3>
+          <div class="price">R$ 300</div>
+          <p>Capacidade operacional em validação.</p>
+          <button disabled>Em avaliação</button>
+        </div>
+
+        <div class="card">
+          <h3>Elite</h3>
+          <div class="price">R$ 500</div>
+          <p>Benefícios ainda não definidos.</p>
+          <button disabled>Em avaliação</button>
+        </div>
+
       </div>
-      <p class="fine">Os valores são referências internas de planejamento e não constituem proposta, convite ao investimento ou promessa de remuneração. Não efetue pagamentos com base nesta página.</p>
+
+      <p style="color:#9db0c9;font-size:12px">
+        Valores apenas referenciais.
+        Esta página não constitui oferta
+        de investimento ou promessa de retorno.
+      </p>
+
     </div>
   </section>
 
   <section id="processo">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>O que acontece antes do lançamento?</h2>
-        <p>Etapas necessárias para que qualquer oferta futura tenha escopo claro e condições sustentáveis.</p>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Próximos passos</h2>
+        <p>
+          Etapas previstas antes do lançamento.
+        </p>
       </div>
+
       <div class="steps">
-        <div class="step"><b>ETAPA 01</b><h3>Validar a operação</h3><p>Documentar serviços, capacidade técnica, custos e forma real de entrega.</p></div>
-        <div class="step"><b>ETAPA 02</b><h3>Revisar finanças e regras</h3><p>Organizar os números com contador e obter análise jurídica independente antes de qualquer captação.</p></div>
-        <div class="step"><b>ETAPA 03</b><h3>Publicar condições finais</h3><p>Somente depois das validações, divulgar produtos, contratos, preços e meios de pagamento adequados.</p></div>
+
+        <div class="step">
+          <h3>01 — Validar operação</h3>
+          <p>
+            Definir serviços, custos e
+            capacidade de entrega.
+          </p>
+        </div>
+
+        <div class="step">
+          <h3>02 — Revisar documentação</h3>
+          <p>
+            Análise financeira e jurídica.
+          </p>
+        </div>
+
+        <div class="step">
+          <h3>03 — Preparar lançamento</h3>
+          <p>
+            Publicar condições comerciais
+            somente após as validações.
+          </p>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="cta">
-        <div><h2>Quer acompanhar o projeto?</h2><p>Entre em contato para solicitar informações institucionais. Este canal não recebe pagamentos nem reservas de investimento.</p></div>
-        <button class="btn btn-primary" onclick="openModal()">Solicitar informações</button>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <div><strong style="color:#eaf6ff">NEXUS VIRTUAL</strong><br>Projeto tecnológico em estruturação.</div>
-    <div>© <span id="year"></span> NEXUS VIRTUAL. Todos os direitos reservados.</div>
-  </div>
-  <div class="wrap" style="margin-top:16px">Esta página é informativa. Não constitui oferta pública de investimento, recomendação financeira, promessa de rendimento ou garantia de retorno. Nenhum pagamento é solicitado por este site.</div>
+  <strong>NEXUS VIRTUAL</strong>
+
+  <p>
+    Tecnologia e infraestrutura digital
+    em estruturação.
+  </p>
+
+  <p>
+    © <span id="year"></span>
+    NEXUS VIRTUAL.
+    Todos os direitos reservados.
+  </p>
+
+  <p>
+    Página informativa.
+    Não constitui oferta de investimento.
+    Nenhum pagamento é solicitado.
+  </p>
 </footer>
 
-<div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeModal()">
-  <div class="dialog">
-    <button class="close" aria-label="Fechar" onclick="closeModal()">×</button>
-    <h2 id="modalTitle">Solicitar informações</h2>
-    <p>Os canais oficiais de atendimento ainda estão sendo configurados. No momento, não estamos recebendo pagamentos, reservas ou adesões aos planos em avaliação.</p>
-    <p>Antes do lançamento, serão publicados os dados de contato da empresa, a descrição dos serviços e os termos aplicáveis.</p>
-    <button class="btn btn-primary" style="width:100%" onclick="closeModal()">Entendi</button>
-  </div>
-</div>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  function openModal(){document.getElementById('infoModal').classList.add('open');}
-  function closeModal(){document.getElementById('infoModal').classList.remove('open');}
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  // Configuração do backend
+  const API_URL =
+    "https://nexus-virtual-backend.onrender.com";
+
+  // Atualizar ano
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  // Verificar servidor
+  async function verificarBackend() {
+    const indicador =
+      document.getElementById("apiIndicator");
+
+    const status =
+      document.getElementById("apiStatus");
+
+    const controller = new AbortController();
+
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 30000);
+
+    try {
+      const resposta = await fetch(
+        API_URL + "/health",
+        {
+          method: "GET",
+          cache: "no-store",
+          signal: controller.signal
+        }
+      );
+
+      if (!resposta.ok) {
+        throw new Error(
+          "Erro HTTP: " + resposta.status
+        );
+      }
+
+      const dados = await resposta.json();
+
+      if (dados.ok === true) {
+        indicador.classList.add("online");
+
+        status.textContent =
+          "Servidor conectado";
+
+        console.log(
+          "NEXUS VIRTUAL: API conectada",
+          dados
+        );
+      } else {
+        throw new Error(
+          "Resposta inválida do servidor"
+        );
+      }
+
+    } catch (erro) {
+      indicador.classList.add("offline");
+
+      status.textContent =
+        "Servidor indisponível ou iniciando";
+
+      console.error(
+        "Erro na conexão:",
+        erro
+      );
+
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  // Iniciar conexão
+  verificarBackend();
 </script>
+
 </body>
 </html>
